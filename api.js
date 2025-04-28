@@ -79,7 +79,7 @@ app.post("/login", async function (req, res) {
   let hashedPasswordFromDB = results[0].username;
   // Verifiera hash med bcrypt
   const user = results[0];
-  const isPasswordValid = await bcrypt.compare(req.body.password, user.password_hash); // justera enligt kolumnnamn
+  const isPasswordValid = await bcrypt.compare(req.body.password, user.password_hash);
 
   if (isPasswordValid) {
     let payload = {
