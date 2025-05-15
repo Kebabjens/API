@@ -5,7 +5,6 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const Secret = "Very secret";
 
-// parse application/json
 const bodyParser = require("body-parser");
 
 const register = async (req, res) => {
@@ -20,7 +19,7 @@ const register = async (req, res) => {
   res.json({ id: results.insertId, name, email });
 };
 
-// Skyddade rutter middleware (kontrollera JWT)
+// kontrollera JWT
 const authenticateJWT = (req, res, next) => {
   const token = req.headers["authorization"];
   if (!token) return res.status(401).json({ error: "Token required" });
